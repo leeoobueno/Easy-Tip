@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.LayoutApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Personalize as cores e estilos do tema aqui -->
+        <!-- Por exemplo, cor primária, cor de fundo, etc. -->
+    </style>
+
+    <style name="Theme.LayoutApplication" parent="Base.Theme.LayoutApplication">
+        <!-- Aqui você pode adicionar customizações adicionais, se necessário -->
+    </style>
+
+    <style name="Title" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>
