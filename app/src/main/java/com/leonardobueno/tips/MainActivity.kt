@@ -1,6 +1,7 @@
 package com.leonardobueno.tips
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -13,6 +14,10 @@ import com.leonardobueno.tips.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private fun intent(mainActivity: MainActivity, any: Any) {
+
+    }
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,20 +81,35 @@ class MainActivity : AppCompatActivity() {
                 val totalTemp = totalTable / nPeople
                 val tips = totalTemp * percentage / 100
                 val totalWithTips = totalTemp + tips
-                binding.tvResult.text = "Total with tips: $totalWithTips"
+
+                val intent = Intent(this, SummaryActivity::class.java)
+                intent.apply {
+                    this
+                    putExtra("totalTable", totalTable)
+                    putExtra("numPeople", numOfPeopleSelected)
+                    putExtra("percentage", percentage)
+                    putExtra("totalAmount", totalWithTips)
+                    clean()
+                    startActivity(intent)
+
+
+                }
 
                 binding.btnClean.setOnClickListener {
-                    binding.tvResult.text = ""
-                    binding.tieTotal.setText("")
-                    binding.rbOptionOne.isChecked = false
-                    binding.rbOptionTwo.isChecked = false
-                    binding.rbOptionThree.isChecked = false
+                    clean()
+
                 }
 
             }
 
 
         }
+    }
+    private fun clean(){
+        binding.tieTotal.setText("")
+        binding.rbOptionOne.isChecked = false
+        binding.rbOptionTwo.isChecked = false
+        binding.rbOptionThree.isChecked = false
     }
 
 }
